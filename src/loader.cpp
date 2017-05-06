@@ -1,7 +1,9 @@
 #include <ali.h>
 #include <loader.h>
 
-ali::Loader::Loader( xmlpp::DomParser& _p ): dom_ ( _p )
+ali::Loader::Loader( xmlpp::DomParser& _p ): 
+    dom_ ( _p ),
+    runner_ ( content_ )
 {
 }
 
@@ -12,7 +14,9 @@ void ali::Loader::load( char const* _path )
 
 void ali::Loader::run ( )
 {
-    ALI_LOG << "----------ALI RUN-----------" << std::endl;
+    ALI_LOG << "----------ALI RUN-----------" << ALI_E;
+    content_.init();
+    runner_.run();
 }
 
 void ali::Loader::load_xml( char const* _path )
@@ -20,7 +24,7 @@ void ali::Loader::load_xml( char const* _path )
     try
     {
 	dom_.parse_file( _path );   
-        xmlpp::Node* root = dom_.get_document()->get_root_node();
+        xmlpp::Element* root = dom_.get_document()->get_root_node();
 	load_element( root );
     }
     catch ( std::exception const& _e )
@@ -29,24 +33,31 @@ void ali::Loader::load_xml( char const* _path )
     }
 }
 
-void ali::Loader::load_element ( xmlpp::Node const* node )
+void ali::Loader::load_element ( xmlpp::Element const* _node )
 {
-    Glib::ustring name = node -> get_name();
-    Glib::ustring prefix = node -> get_namespace_prefix();
+    Glib::ustring name = _node -> get_name();
+    Glib::ustring prefix = _node -> get_namespace_prefix();
     if ( "text" != name ) 
-	prepare_load_so( prefix, name );
+	load_so( load_factory( prefix, name ), _node );
 
-    for ( xmlpp::Node const* ch = node->get_first_child(); ch; ch = ch -> get_next_sibling() )
+    for ( xmlpp::Element const* ch = static_cast<xmlpp::Element const*>(_node->get_first_child() ); ch; ch =  static_cast<xmlpp::Element const*>( ch -> get_next_sibling() ) )
 	load_element( ch );
 }
 
-void ali::Loader::prepare_load_so( Glib::ustring const& prefix, Glib::ustring const& name  )
+ali::ItemFactory const* ali::Loader::load_factory( Glib::ustring const& prefix, Glib::ustring const& name  )
 {
     std::string lib_name( "libutil_EmptyLogic" );
     if ( !prefix.empty() )
 	lib_name = "lib" + prefix + "_" + name;
 
     ALI_LOG << "Load DLL: " << lib_name << ALI_E;     
-    loader_.load_lib( lib_name );
+    return loader_.load_lib( lib_name );
+}
+
+
+void ali::Loader::load_so ( ali::ItemFactory const* _f, xmlpp::Element const* _n )
+{
+    if ( _f ) 
+	content_.add_item( _f->create_item( _n  ) );
 }
 

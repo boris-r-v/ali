@@ -12,7 +12,7 @@ namespace ali
 	    public:
 		ItemFactory() = default;
 		virtual ~ItemFactory() = default;
-	        virtual std::shared_ptr<ali::ItemImpl> createItem( xmlpp::Element const* _n ) = 0;
+	        virtual std::shared_ptr<ali::ItemImpl> create_item( xmlpp::Element const* _n ) const = 0;
 	};
 	typedef ItemFactory* (*CreateFunction) ( );
 }

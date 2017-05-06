@@ -10,7 +10,7 @@ namespace @MODUL@{
 	    @ITEM@( xmlpp::Element const* );
 	    virtual ~@ITEM@() = default;
 	
-	    virtual void therd_up_( );	    
+	    virtual void third_up_( );	    
 	    virtual void second_up_( );
 	    virtual void first_up_( );
 

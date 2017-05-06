@@ -44,9 +44,17 @@ ali::ItemFactory* ali::LibLoader::load_lib( std::string const& fabric_name )
 	}
 	else
 	{
-	    char* error = dlerror();
-	    std::cout<<"LibLoader::loadLib cant load library: "<<error<<std::endl<<"Load libutil_EmptyLogic"<<std::endl;
-	    return nullptr;//load_lib ("libutil_EmptyLogic");
+	    if ( "libutil_EmptyLogic" !=  fabric_name )
+	    {
+	        char* error = dlerror();
+		std::cout<<"LibLoader::load_lib cant load library: "<<error<<std::endl<<"Load libutil_EmptyLogic"<<std::endl;
+	        return load_lib ("libutil_EmptyLogic");
+	    }
+	    else
+	    {
+		std::cerr<<"LibLoader::load_lib cant find libutil_EmptyLogic"<<std::endl;
+		exit ( (int)ali::rcode::ERROR);
+	    }
 	}
 	
     }

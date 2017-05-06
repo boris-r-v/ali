@@ -10,7 +10,7 @@ namespace util{
 	    con( xmlpp::Element const* );
 	    virtual ~con() = default;
 	
-	    virtual void therd_up_( );	    
+	    virtual void third_up_( );	    
 	    virtual void second_up_( );
 	    virtual void first_up_( );
 

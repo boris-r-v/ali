@@ -9,7 +9,7 @@ extern "C" @MODUL@::@ITEM@Factory* lib@MODUL@_@ITEM@( )
 }
 
 
-std::shared_ptr<ali::ItemImpl> @MODUL@::@ITEM@Factory::createItem( xmlpp::Element const* _p )
+std::shared_ptr<ali::ItemImpl> @MODUL@::@ITEM@Factory::create_item( xmlpp::Element const* _p ) const
 {
     std::shared_ptr<@MODUL@::@ITEM@> ii( new @MODUL@::@ITEM@( _p ) );
     std::string id = _p->get_attribute_value("id");

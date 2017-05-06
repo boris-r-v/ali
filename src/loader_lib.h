@@ -2,10 +2,11 @@
 #define ali_loader_lib
 #include <map>
 #include <itemfactory.h>
+#include <boost/noncopyable.hpp>
 
 namespace ali
 {
-	class LibLoader
+	class LibLoader: public boost::noncopyable
 	{
 		struct So
 		{
