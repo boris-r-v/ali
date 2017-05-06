@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:util='http:test.ru' >
+
+    <util:Loop id="emiter" title="FL" />   	
+    
+    <util:Rec id="rec2" title="Rec" >
+	<util:con s="emiter.value" d="value" >TEXT</util:con>
+    </util:Rec>
+
+</root>

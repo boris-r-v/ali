@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<g>
+    <obj ns="util" name="EmptyLogic" inheritance="" title="Описание даннго модуля">
+    	<attribute name="debug" type="long" title="Тестовый вывод"/>
+    	<attribute name="debug1" type="long" title="Тестовый вывод"/>
+    	<attribute name="debug2" type="long" title="Тестовый вывод"/>
+    	<attribute name="debug3" type="string" title="Тестовый вывод"/>
+    </obj>
+</g>
+

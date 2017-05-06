@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd ..
+pwd=`pwd`
+cd ./src
+idl=`ls ../idl`
+idl="$pwd/idl/$idl"
+echo "Using object specifications from "$idl
+/usr/lib/ali/bend/alimake.py $idl

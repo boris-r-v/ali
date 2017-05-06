@@ -1,0 +1,16 @@
+#ifndef _@MODUL@_@ITEM@Factory_hh_
+#define _@MODUL@_@ITEM@Factory_hh_
+
+#include <itemfactory.h>
+
+namespace @MODUL@ 
+{
+    class   @ITEM@Factory: public ali::ItemFactory
+    {
+	public:    
+	    virtual std::shared_ptr<ali::ItemImpl> createItem( xmlpp::Element const* _n );
+    };
+};	
+
+#endif // _@MODUL@_@ITEM@Factory_hh_
+

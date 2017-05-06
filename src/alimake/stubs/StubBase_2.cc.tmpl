@@ -1,0 +1,21 @@
+
+}
+
+void @MODUL@::@ITEM@Base::id( std::string const& _id)
+{
+    if ( id_.empty() ) id_ = _id;
+}
+std::string @MODUL@::@ITEM@Base::id() const
+{
+    return id_;
+}
+std::string @MODUL@::@ITEM@Base::repo() const
+{
+    return repo_;
+}
+
+void @MODUL@::@ITEM@Base::applyAttrs()
+{
+    for( auto at : xml_node()->get_attributes() )
+	set_attr( at->get_name(), at->get_value() );
+}

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+mkdir -p $1/src
+mkdir -p $1/idl
+touch $1/idl/$1.xml
+DIR=`pwd | awk -F/ '{print $NF}'`
+echo '<?xml version="1.0" encoding="UTF-8"?>
+<g>
+    <obj ns="'$DIR'" name="'$1'" inheritance="" title="Описание даннго модуля">
+    	<attribute name="debug" type="long" title="Тестовый вывод"/>
+    </obj>
+</g>
+' > $1/idl/$1.xml
+
+cd $1/src/
+alimake

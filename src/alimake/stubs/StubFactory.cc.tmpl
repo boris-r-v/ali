@@ -1,0 +1,27 @@
+#include "@ITEM@Factory.hh"
+#include "@ITEM@.h"
+
+extern "C" @MODUL@::@ITEM@Factory* lib@MODUL@_@ITEM@( );
+
+extern "C" @MODUL@::@ITEM@Factory* lib@MODUL@_@ITEM@( )
+{
+        return new @MODUL@::@ITEM@Factory();
+}
+
+
+std::shared_ptr<ali::ItemImpl> @MODUL@::@ITEM@Factory::createItem( xmlpp::Element const* _p )
+{
+    std::shared_ptr<@MODUL@::@ITEM@> ii( new @MODUL@::@ITEM@( _p ) );
+    std::string id = _p->get_attribute_value("id");
+    if ( id.empty() )
+    { 
+	char buff[20];
+	snprintf(buff, sizeof(buff), "_%p_", ii.get() );
+	ii->id( buff );
+    }
+    else
+    {
+	ii->id( id.c_str() );
+    }
+    return ii;    
+}
