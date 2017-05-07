@@ -4,6 +4,10 @@ ali
 
 *This is a simply, modular, SCADA develop-kit.*
 
+**Compile**
+    You need libxml++2.6-dev ( for debian-based: "sudo apt-get install libxml++2.6-dev" )
+    Into ali directory type: make remake
+
 **Puprose**
     Now, it uses into scada-controlers  just for control serial devices, guiless, but its`n a limit of use purpose.
 

@@ -45,3 +45,11 @@ inquirer:
 doc:
 	@[ -d reference ] || mkdir -v reference
 	$(DOXYGEN) doxygen/Doxyfile
+
+distclean:
+	@sudo rm -frv /usr/lib/ali
+	@sudo rm -frv /usr/include/ali
+	@sudo rm -fv /usr/bin/ali 
+	@sudo rm -fv /usr/bin/alirun
+	@sudo rm -fv /usr/bin/alidirs 
+
