@@ -22,7 +22,11 @@ ali
 
     You need libxml++2.6-dev ( for debian-based: "sudo apt-get install libxml++2.6-dev" )
 
-    Into ali directory type: make remake
+    Into ali directory type: 
+	
+	- sudo make remake - for make project
+	
+	- sudo make distclean - for clear /usr (While making proccess, some file will being copy into /usr/bin/, usr/lib and /usr/include )
 
 **Directories**
 
