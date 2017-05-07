@@ -19,15 +19,21 @@ ali
 	5. DONE: Stub generator by xml modules defenition.
  
 **Compile**
+
     You need libxml++2.6-dev ( for debian-based: "sudo apt-get install libxml++2.6-dev" )
+
     Into ali directory type: make remake
 
 **Directories**
+
     src - system core
+
     uml - UML Diagrams (use: Umbrello)
+
     util - some programm modules
 
 **Run**
+
     Cd src, type alirun.
 
   
