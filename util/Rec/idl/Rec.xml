@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<g>
+    <obj ns="util" name="Rec" inheritance="" title="Описание даннго модуля">
+    	<attribute name="debug" type="long" title="Тестовый вывод"/>
+    </obj>
+</g>
+
