@@ -4,10 +4,6 @@ ali
 
 *This is a simply, modular, SCADA develop-kit.*
 
-**Compile**
-    You need libxml++2.6-dev ( for debian-based: "sudo apt-get install libxml++2.6-dev" )
-    Into ali directory type: make remake
-
 **Puprose**
     Now, it uses into scada-controlers  just for control serial devices, guiless, but its`n a limit of use purpose.
 
@@ -22,6 +18,18 @@ ali
 
 	5. DONE: Stub generator by xml modules defenition.
  
+**Compile**
+    You need libxml++2.6-dev ( for debian-based: "sudo apt-get install libxml++2.6-dev" )
+    Into ali directory type: make remake
+
+**Dirs*
+    src - system core
+    uml - UML Diagrams (use: Umbrello)
+    util - some programm modules
+
+**Run**
+    Cd src, type alirun.
+
   
 
 
