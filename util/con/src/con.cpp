@@ -3,11 +3,11 @@
 util::con::con( xmlpp::Element const* _p ): 
     util::conBase ( _p )
 {
+    util::conBase::apply_attrs();
 }
 
 void util::con::first_up_( )
 { //first stage of activation of element	
-    util::conBase::applyAttrs( );
 }
 
 void util::con::second_up_( )

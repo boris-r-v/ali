@@ -3,11 +3,11 @@
 util::EmptyLogic::EmptyLogic( xmlpp::Element const* _p ): 
     util::EmptyLogicBase ( _p )
 {
+    util::EmptyLogicBase::apply_attrs();
 }
 
 void util::EmptyLogic::first_up_( )
 { //first stage of activation of element	
-    util::EmptyLogicBase::applyAttrs( );
 }
 
 void util::EmptyLogic::second_up_( )

@@ -14,7 +14,6 @@ void ali::Loader::load( char const* _path )
 
 void ali::Loader::run ( )
 {
-    ALI_LOG << "----------ALI RUN-----------" << ALI_E;
     content_.init();
     runner_.run();
 }
