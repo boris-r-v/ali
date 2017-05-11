@@ -14,6 +14,8 @@ namespace util{
 	    virtual void second_up_( );
 	    virtual void first_up_( );
 
+	    virtual void tic( );
+
 
     };
 };

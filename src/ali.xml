@@ -3,8 +3,8 @@
 
     <util:Loop id="emiter" title="FL" />   	
     
-    <util:Rec id="rec2" title="Rec" >
-	<util:con s="emiter.value" d="value" >TEXT</util:con>
-    </util:Rec>
+    <util:Rec id="rec2" title="Rec" />
+	<!--util:con s="emiter.value" d="value" >TEXT</util:con>
+    </util:Rec-->
 
 </root>

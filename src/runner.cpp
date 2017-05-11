@@ -9,6 +9,7 @@ ali::Runner& ali::Runner::Instance()
 
 void ali::Runner::run()
 {
+    ALI_LOG<< "---------ali main loop run---------" << ALI_E;
     while ( 1 )
     {
 	ali::Content::Instance().tic();

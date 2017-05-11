@@ -2,5 +2,7 @@
 <root xmlns:util='http://test.ru' >
 
     <util:Loop id="emiter" title="FL" />   	
+
+    <util:Rec id="reciever" />   	
     
 </root>

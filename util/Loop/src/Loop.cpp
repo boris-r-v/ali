@@ -1,4 +1,6 @@
 #include <Loop.h>
+#include <ali/tag.h>
+#include <chrono>
 
 util::Loop::Loop( xmlpp::Element const* _p ): 
     util::LoopBase ( _p )
@@ -20,3 +22,10 @@ void util::Loop::third_up_( )
 }
 
 
+void util::Loop::tic( )
+{
+    std::time_t ct = std::chrono::system_clock::to_time_t( std::chrono::system_clock::now() );
+    ali::emit_tag( "time", ct );
+    ali::emit_tag( "ctime", std::string ( ctime( &ct ) ) );
+    ALI_LOG << "ctime: " << ctime( &ct ) << ALI_E;
+}
