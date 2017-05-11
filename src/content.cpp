@@ -1,6 +1,12 @@
 #include <ali.h>
 #include <content.h>
 
+ali::Content& ali::Content::Instance()
+{
+    static Content __theContentInstance;
+    return __theContentInstance;
+}
+
 void ali::Content::add_item( std::shared_ptr<ali::ItemImpl> _sp )
 {
     if ( true == items_.insert( std::make_pair(_sp->id(), _sp ) ).second ) return;

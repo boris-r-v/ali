@@ -1,6 +1,7 @@
 #ifndef ALI_CONTENT
 #define ALI_CONTENT
 
+#include <boost/noncopyable.hpp>
 #include <itemimpl.h>
 #include <memory>
 #include <string>
@@ -8,12 +9,14 @@
 
 namespace ali
 {
-    class Content
+    class Content: public boost::noncopyable
     {
-	typedef std::map <std::string, std::shared_ptr<ali::ItemImpl> > Items;
-	Items items_;
-	public:
 	    Content() = default;
+
+	    typedef std::map <std::string, std::shared_ptr<ali::ItemImpl> > Items;
+	    Items items_;
+	public:
+	    static Content& Instance();
 	    ~Content() = default;
 
 	    void add_item( std::shared_ptr<ali::ItemImpl> );	  

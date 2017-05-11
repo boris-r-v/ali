@@ -3,6 +3,12 @@
 #include <itemfactory.h>
 #include <cstddef>
 
+ali::LibLoader& ali::LibLoader::Instance()
+{
+    static LibLoader __theLibLoaderInstance;
+    return __theLibLoaderInstance;
+}
+
 ali::LibLoader::So::So(ItemFactory* _if, void* _lib):
 	factory_ (_if),
 	library_ (_lib)

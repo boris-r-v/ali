@@ -1,20 +1,20 @@
-#ifndef ALI_LOADER
-#define ALI_LOADER
+#ifndef ALI_CORE
+#define ALI_CORE
 
-#include <libxml++/libxml++.h>
 #include <boost/noncopyable.hpp>
+#include <libxml++/libxml++.h>
 #include <loader_lib.h>	
 #include <content.h>	
 #include <runner.h>	
 
 namespace ali
 {
-    class Loader: public boost::noncopyable
+    class Core: public boost::noncopyable
     {
-	    xmlpp::DomParser& dom_;
-	    ali::LibLoader loader_; //FIX later - сделать многопочный синглтон
-	    ali::Content content_; 
-	    ali::Runner runner_; 
+	    xmlpp::DomParser &dom_;
+	    ali::LibLoader& loader_;
+	    ali::Content& content_; 
+	    ali::Runner& runner_; 
 
 	    void load_xml( char const* );
 	    void load_element ( xmlpp::Element const* node );
@@ -22,9 +22,9 @@ namespace ali
 	    void load_so ( ali::ItemFactory const*, xmlpp::Element const* _node );
 
 	public:
-	    Loader() = delete;
-	    Loader( xmlpp::DomParser& );
-	    ~Loader() = default;
+	    Core() = delete;
+	    Core( xmlpp::DomParser& );
+	    ~Core() = default;
 
 	    void load( char const* );
 	    void run ( );
@@ -33,4 +33,4 @@ namespace ali
 }
 
 
-#endif // ALI_LOADER
+#endif // ALI_CORE

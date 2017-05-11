@@ -1,24 +1,26 @@
 #include <ali.h>
-#include <loader.h>
+#include <core.h>
 
-ali::Loader::Loader( xmlpp::DomParser& _p ): 
+ali::Core::Core( xmlpp::DomParser& _p ): 
     dom_ ( _p ),
-    runner_ ( content_ )
+    runner_ ( ali::Runner::Instance() ),
+    content_ ( ali::Content::Instance() ),
+    loader_ ( ali::LibLoader::Instance() )
 {
 }
 
-void ali::Loader::load( char const* _path )
+void ali::Core::load( char const* _path )
 {
     load_xml( _path );
 }
 
-void ali::Loader::run ( )
+void ali::Core::run ( )
 {
     content_.init();
     runner_.run();
 }
 
-void ali::Loader::load_xml( char const* _path )
+void ali::Core::load_xml( char const* _path )
 {
     try
     {
@@ -32,7 +34,7 @@ void ali::Loader::load_xml( char const* _path )
     }
 }
 
-void ali::Loader::load_element ( xmlpp::Element const* _node )
+void ali::Core::load_element ( xmlpp::Element const* _node )
 {
     Glib::ustring name = _node -> get_name();
     Glib::ustring prefix = _node -> get_namespace_prefix();
@@ -43,7 +45,7 @@ void ali::Loader::load_element ( xmlpp::Element const* _node )
 	load_element( ch );
 }
 
-ali::ItemFactory const* ali::Loader::load_factory( Glib::ustring const& prefix, Glib::ustring const& name  )
+ali::ItemFactory const* ali::Core::load_factory( Glib::ustring const& prefix, Glib::ustring const& name  )
 {
     std::string lib_name( "libutil_EmptyLogic" );
     if ( !prefix.empty() )
@@ -54,7 +56,7 @@ ali::ItemFactory const* ali::Loader::load_factory( Glib::ustring const& prefix, 
 }
 
 
-void ali::Loader::load_so ( ali::ItemFactory const* _f, xmlpp::Element const* _n )
+void ali::Core::load_so ( ali::ItemFactory const* _f, xmlpp::Element const* _n )
 {
     if ( _f ) 
 	content_.add_item( _f->create_item( _n  ) );

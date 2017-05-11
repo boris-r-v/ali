@@ -1,16 +1,15 @@
 #include <memory>
-#include <loader.h>
-
-#include <libxml++/libxml++.h>
+#include <core.h>
 
 int main (int argc, char** argv )
 {
-    xmlpp::DomParser parser;
+    xmlpp::DomParser parser; //FIX Почему-то если поле класса Core - то парсинг сегфорлится
 
-    std::unique_ptr <ali::Loader> loader( new ali::Loader( parser ) );
+    std::unique_ptr <ali::Core> core( new ali::Core( parser ) );
     if ( 1 == argc )
-	loader->load ("ali.xml");
+	core->load ("ali.xml");
     else
-	loader->load ( argv[1] );
-    loader->run();
+	core->load ( argv[1] );
+
+    core->run();
 }

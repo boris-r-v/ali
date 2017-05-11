@@ -1,18 +1,17 @@
 #ifndef ali_runner
 #define ali_runner
 #include <boost/noncopyable.hpp>
-#include <content.h>
 
 namespace ali
 {
     class Runner: public boost::noncopyable
     {
-	    ali::Content& content_;
+	    Runner( ) = default;
+
 	public:
-	    Runner( ali::Content& );
-
+	    static Runner& Instance();
+	    ~Runner() = default;
 	    void run();
-
     };
 }
 #endif // ali_runner

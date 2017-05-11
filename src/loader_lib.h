@@ -8,6 +8,8 @@ namespace ali
 {
 	class LibLoader: public boost::noncopyable
 	{
+		LibLoader( ) = default;
+
 		struct So
 		{
 		    ali::ItemFactory*	factory_;
@@ -21,11 +23,10 @@ namespace ali
 		Libs	_in_libs;				
 
 	    public:
-		LibLoader( ) = default;
+		static LibLoader& Instance();
 		~LibLoader( );
 	    
 		ItemFactory* load_lib( std::string const& fabric_name );
-		
 	};    
 
 }

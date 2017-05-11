@@ -1,15 +1,17 @@
 #include <runner.h>
+#include <content.h>
 
-ali::Runner::Runner( ali::Content& _c ):
-    content_ ( _c )
+ali::Runner& ali::Runner::Instance()
 {
+    static Runner __theRunnerInstance;
+    return __theRunnerInstance;
 }
 
 void ali::Runner::run()
 {
     while ( 1 )
     {
-	content_.tic();
+	ali::Content::Instance().tic();
 	sleep(1);
     }
 
