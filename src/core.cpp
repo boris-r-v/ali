@@ -16,7 +16,6 @@ void ali::Core::load( char const* _path )
 
 void ali::Core::run ( )
 {
-    content_.init();
     runner_.run();
 }
 

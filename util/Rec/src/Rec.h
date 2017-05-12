@@ -7,16 +7,18 @@
 namespace util{
     class Rec: public util::RecBase
     {
+
+	    void activate( );
+	    virtual void accept( ali::Init_Visitor& );	
+
 	    void rec_time( ali::Tag const& );
 	    void rec_ctime( ali::Tag const& );
 
 	public:
 	    Rec( xmlpp::Element const* );
 	    virtual ~Rec() = default;
-	
-	    virtual void third_up_( );	    
-	    virtual void second_up_( );
-	    virtual void first_up_( );
+	    
+
 
     };
 };

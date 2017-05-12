@@ -6,13 +6,14 @@
 namespace @MODUL@{
     class @ITEM@: public @MODUL@::@ITEM@Base
     {
+
+	    void activate( );
+	    virtual void accept( ali::Init_Visitor& );	
+
 	public:
 	    @ITEM@( xmlpp::Element const* );
 	    virtual ~@ITEM@() = default;
-	
-	    virtual void third_up_( );	    
-	    virtual void second_up_( );
-	    virtual void first_up_( );
+	    
 
 
     };

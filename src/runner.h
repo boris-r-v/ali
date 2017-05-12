@@ -8,6 +8,9 @@ namespace ali
     {
 	    Runner( ) = default;
 
+	    void init();
+	    void tic();
+
 	public:
 	    static Runner& Instance();
 	    ~Runner() = default;

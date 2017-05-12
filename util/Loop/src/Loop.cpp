@@ -8,19 +8,18 @@ util::Loop::Loop( xmlpp::Element const* _p ):
     util::LoopBase::apply_attrs();
 }
 
-void util::Loop::first_up_( )
-{ //first stage of activation of element	
-    ALI_LOG <<" ^^^^ " << title() << ALI_E;
+void util::Loop::accept( ali::Init_Visitor& _iv )
+{
+    _iv.add_init_stage( 1, std::bind( &util::Loop::activate, this ) );
 }
 
-void util::Loop::second_up_( )
-{ //second stage of activation of element	
-}
 
-void util::Loop::third_up_( )
-{ //third stage of activation of element	
-}
+void util::Loop::activate( )
+{ //first stage of activation the element
 
+    ALI_LOG <<" util::Loop::title: " << title() << ALI_E;
+
+}
 
 void util::Loop::tic( )
 {

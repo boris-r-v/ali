@@ -6,13 +6,14 @@
 namespace util{
     class EmptyLogic: public util::EmptyLogicBase
     {
+
+	    void activate( );
+	    virtual void accept( ali::Init_Visitor& );	
+
 	public:
 	    EmptyLogic( xmlpp::Element const* );
 	    virtual ~EmptyLogic() = default;
-	
-	    virtual void third_up_( );	    
-	    virtual void second_up_( );
-	    virtual void first_up_( );
+	    
 
 
     };

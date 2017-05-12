@@ -6,13 +6,14 @@
 namespace util{
     class con: public util::conBase
     {
+
+	    void activate( );
+	    virtual void accept( ali::Init_Visitor& );	
+
 	public:
 	    con( xmlpp::Element const* );
 	    virtual ~con() = default;
-	
-	    virtual void third_up_( );	    
-	    virtual void second_up_( );
-	    virtual void first_up_( );
+	    
 
 
     };

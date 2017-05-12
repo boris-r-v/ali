@@ -6,13 +6,14 @@
 namespace util{
     class Loop: public util::LoopBase
     {
+
+	    void activate( );
+	    virtual void accept( ali::Init_Visitor& );	
+
 	public:
 	    Loop( xmlpp::Element const* );
 	    virtual ~Loop() = default;
-	
-	    virtual void third_up_( );	    
-	    virtual void second_up_( );
-	    virtual void first_up_( );
+	    
 
 	    virtual void tic( );
 

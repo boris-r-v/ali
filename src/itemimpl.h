@@ -4,6 +4,7 @@
 #include <map>
 #include <ali.h>
 #include <string>
+#include <init_visitor.h>
 #include <libxml++/libxml++.h>
 
 namespace ali
@@ -14,20 +15,22 @@ namespace ali
 
 	    typedef std::map<std::string, std::string> Attrs;
 	    Attrs attrs_; 
+
+	    virtual void accept( Init_Visitor& ) = 0;
+
 	public:
 	    ItemImpl( ) = default;
     	    virtual ~ItemImpl() = 0;
     	    ItemImpl( xmlpp::Element const* );
 
-	    virtual void third_up_( ) = 0;	    
-	    virtual void second_up_( ) = 0;
-	    virtual void first_up_( ) = 0;
 	    virtual std::string id() const = 0;
 
 	    xmlpp::Element const* xml_node(){ return xml_node_ptr_; }
 
+	    /*sample tic method*/
 	    virtual void tic();
-    
+	
+	friend class Runner;
     };
 }
 

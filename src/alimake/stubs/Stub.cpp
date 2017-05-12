@@ -6,16 +6,14 @@
     @MODUL@::@ITEM@Base::apply_attrs();
 }
 
-void @MODUL@::@ITEM@::first_up_( )
-{ //first stage of activation of element	
+void @MODUL@::@ITEM@::accept( ali::Init_Visitor& _iv )
+{
+    _iv.add_init_stage( 1, std::bind( &@MODUL@::@ITEM@::activate, this ) );
 }
 
-void @MODUL@::@ITEM@::second_up_( )
-{ //second stage of activation of element	
-}
 
-void @MODUL@::@ITEM@::third_up_( )
-{ //third stage of activation of element	
+void @MODUL@::@ITEM@::activate( )
+{ //first stage of activation the element
 }
 
 

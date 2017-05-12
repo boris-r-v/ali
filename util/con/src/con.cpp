@@ -6,16 +6,14 @@ util::con::con( xmlpp::Element const* _p ):
     util::conBase::apply_attrs();
 }
 
-void util::con::first_up_( )
-{ //first stage of activation of element	
+void util::con::accept( ali::Init_Visitor& _iv )
+{
+    _iv.add_init_stage( 1, std::bind( &util::con::activate, this ) );
 }
 
-void util::con::second_up_( )
-{ //second stage of activation of element	
-}
 
-void util::con::third_up_( )
-{ //third stage of activation of element	
+void util::con::activate( )
+{ //first stage of activation the element
 }
 
 

@@ -81,8 +81,8 @@ void ali::TagService::emit_tag( Tag const& _t )
     if ( fnd != map_.end() )
     {     
         lock_.lock();
-	for ( size_t i = 0; i < fnd->second.size(); ++i )
-	    fnd->second[i](_t);
+	for ( auto  i : fnd->second )
+	    i(_t);
 	lock_.unlock();
     }
 }

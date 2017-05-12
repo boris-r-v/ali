@@ -3,7 +3,7 @@
 
 #include <map>
 #include <mutex>
-#include <vector>
+#include <list>
 #include <functional>
 #include <boost/variant.hpp>
 namespace ali
@@ -88,7 +88,7 @@ namespace ali
 
     class TagService
     {
-	    std::map<std::string, std::vector< std::function< void ( ali::Tag const&) > > > map_;
+	    std::map<std::string, std::list< std::function< void ( ali::Tag const&) > > > map_;
     	    std::mutex lock_;
 	    TagService() = default;
 	public:

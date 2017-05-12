@@ -1,5 +1,6 @@
 #include <runner.h>
 #include <content.h>
+#include <init_visitor.h>
 
 ali::Runner& ali::Runner::Instance()
 {
@@ -9,11 +10,26 @@ ali::Runner& ali::Runner::Instance()
 
 void ali::Runner::run()
 {
+    init();
     ALI_LOG<< "---------ali main loop run---------" << ALI_E;
     while ( 1 )
     {
-	ali::Content::Instance().tic();
+	tic();
 	sleep(1);
     }
 
+}
+
+void ali::Runner::tic()
+{
+    for ( auto i : ali::Content::Instance().get_items() )
+	i.second -> tic();
+}
+
+void ali::Runner::init()
+{
+    ali::Init_Visitor _iv;
+    for ( auto i : ali::Content::Instance().get_items() )
+	i.second -> accept( _iv );
+    _iv.init_impls();
 }
