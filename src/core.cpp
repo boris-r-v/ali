@@ -1,5 +1,6 @@
 #include <ali.h>
 #include <core.h>
+#include <init_visitor.h>
 
 ali::Core::Core( xmlpp::DomParser& _p ): 
     dom_ ( _p ),
@@ -12,6 +13,13 @@ ali::Core::Core( xmlpp::DomParser& _p ):
 void ali::Core::load( char const* _path )
 {
     load_xml( _path );
+}
+
+void ali::Core::init()
+{
+    ali::Init_Visitor _iv;
+    _iv.collect_impls();
+    _iv.init_impls();
 }
 
 void ali::Core::run ( )
@@ -60,4 +68,3 @@ void ali::Core::load_so ( ali::ItemFactory const* _f, xmlpp::Element const* _n )
     if ( _f ) 
 	content_.add_item( _f->create_item( _n  ) );
 }
-

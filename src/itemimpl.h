@@ -4,11 +4,11 @@
 #include <map>
 #include <ali.h>
 #include <string>
-#include <init_visitor.h>
 #include <libxml++/libxml++.h>
 
 namespace ali
 {
+    class Init_Visitor;
     class ItemImpl
     {
 	    xmlpp::Element const* xml_node_ptr_;
@@ -30,7 +30,7 @@ namespace ali
 	    /*sample tic method*/
 	    virtual void tic();
 	
-	friend class Runner;
+	friend class Init_Visitor;
     };
 }
 

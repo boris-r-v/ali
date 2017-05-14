@@ -4,21 +4,25 @@
 #include <map>
 #include <list>
 #include <functional>
+#include <init_stages.h>
 
 namespace ali
 {
-    typedef std::map<int, std::list< std::function< void () > > > InitStageMap;
-
     class Init_Visitor
     {
 	    InitStageMap map_;
+
+	    void collect_impls( );
+	    void init_impls( );
+
 	public:
 	    Init_Visitor() = default;
 	    ~Init_Visitor() = default;
     
-	    void add_init_stage( unsigned, std::function< void () > );
-	    void init_impls( );
+	    void add_init_stage( ali::Init, std::function< void () > );
 
+
+	friend class Core;
     };
 
 }

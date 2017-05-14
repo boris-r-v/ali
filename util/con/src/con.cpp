@@ -8,7 +8,7 @@ util::con::con( xmlpp::Element const* _p ):
 
 void util::con::accept( ali::Init_Visitor& _iv )
 {
-    _iv.add_init_stage( 1, std::bind( &util::con::activate, this ) );
+    _iv.add_init_stage( ali::Init::Stage_1, std::bind( &util::con::activate, this ) );
 }
 
 

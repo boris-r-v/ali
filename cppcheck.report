@@ -1,0 +1,44 @@
+boris@inspiron:~/Work/Devel/.stepic_C++/ali$ cppcheck --enable=all --std=c++11 --inconclusive --check-config --quiet -I./src . 2> cppcheck.report
+
+
+[src/alimake/stubs/Stub.cpp:1]: (information) Include file: <@ITEM@.h> not found.
+[src/ali.h:4]: (information) Include file: <iostream> not found.
+[src/content.h:4]: (information) Include file: <boost/noncopyable.hpp> not found.
+[src/itemimpl.h:4]: (information) Include file: <map> not found.
+[src/itemimpl.h:6]: (information) Include file: <string> not found.
+[src/init_visitor.h:4]: (information) Include file: <map> not found.
+[src/init_visitor.h:5]: (information) Include file: <list> not found.
+[src/init_visitor.h:6]: (information) Include file: <functional> not found.
+[src/itemimpl.h:8]: (information) Include file: <libxml++/libxml++.h> not found.
+[src/content.h:6]: (information) Include file: <memory> not found.
+[src/content.h:7]: (information) Include file: <string> not found.
+[src/content.h:8]: (information) Include file: <map> not found.
+[src/core.h:4]: (information) Include file: <boost/noncopyable.hpp> not found.
+[src/core.h:5]: (information) Include file: <libxml++/libxml++.h> not found.
+[src/loader_lib.h:3]: (information) Include file: <map> not found.
+[src/itemfactory.h:6]: (information) Include file: <memory> not found.
+[src/loader_lib.h:5]: (information) Include file: <boost/noncopyable.hpp> not found.
+[src/runner.h:3]: (information) Include file: <boost/noncopyable.hpp> not found.
+[src/loader_lib.cpp:2]: (information) Include file: <dlfcn.h> not found.
+[src/loader_lib.cpp:4]: (information) Include file: <cstddef> not found.
+[src/main.cpp:1]: (information) Include file: <memory> not found.
+[src/tag.h:4]: (information) Include file: <map> not found.
+[src/tag.h:5]: (information) Include file: <mutex> not found.
+[src/tag.h:6]: (information) Include file: <list> not found.
+[src/tag.h:7]: (information) Include file: <functional> not found.
+[src/tag.h:8]: (information) Include file: <boost/variant.hpp> not found.
+[util/EmptyLogic/src/EmptyLogic.cpp:1]: (information) Include file: <EmptyLogic.h> not found.
+[util/EmptyLogic/src/EmptyLogicBase.cc:2]: (information) Include file: <stdlib.h> not found.
+[util/EmptyLogic/src/EmptyLogic.h:4]: (information) Include file: <EmptyLogicBase.hh> not found.
+[util/Loop/src/Loop.cpp:1]: (information) Include file: <Loop.h> not found.
+[util/Loop/src/Loop.cpp:2]: (information) Include file: <ali/tag.h> not found.
+[util/Loop/src/Loop.cpp:3]: (information) Include file: <chrono> not found.
+[util/Loop/src/LoopBase.cc:2]: (information) Include file: <stdlib.h> not found.
+[util/Loop/src/Loop.h:4]: (information) Include file: <LoopBase.hh> not found.
+[util/Rec/src/Rec.cpp:1]: (information) Include file: <Rec.h> not found.
+[util/Rec/src/RecBase.cc:2]: (information) Include file: <stdlib.h> not found.
+[util/Rec/src/Rec.h:4]: (information) Include file: <RecBase.hh> not found.
+[util/Rec/src/Rec.h:5]: (information) Include file: <ali/tag.h> not found.
+[util/con/src/con.cpp:1]: (information) Include file: <con.h> not found.
+[util/con/src/conBase.cc:2]: (information) Include file: <stdlib.h> not found.
+[util/con/src/con.h:4]: (information) Include file: <conBase.hh> not found.

@@ -8,7 +8,7 @@ util::EmptyLogic::EmptyLogic( xmlpp::Element const* _p ):
 
 void util::EmptyLogic::accept( ali::Init_Visitor& _iv )
 {
-    _iv.add_init_stage( 1, std::bind( &util::EmptyLogic::activate, this ) );
+    _iv.add_init_stage( ali::Init::Stage_1, std::bind( &util::EmptyLogic::activate, this ) );
 }
 
 

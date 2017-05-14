@@ -10,7 +10,7 @@ util::Loop::Loop( xmlpp::Element const* _p ):
 
 void util::Loop::accept( ali::Init_Visitor& _iv )
 {
-    _iv.add_init_stage( 1, std::bind( &util::Loop::activate, this ) );
+    _iv.add_init_stage( ali::Init::Stage_1, std::bind( &util::Loop::activate, this ) );
 }
 
 

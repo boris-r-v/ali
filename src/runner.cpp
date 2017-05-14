@@ -10,7 +10,6 @@ ali::Runner& ali::Runner::Instance()
 
 void ali::Runner::run()
 {
-    init();
     ALI_LOG<< "---------ali main loop run---------" << ALI_E;
     while ( 1 )
     {
@@ -26,10 +25,3 @@ void ali::Runner::tic()
 	i.second -> tic();
 }
 
-void ali::Runner::init()
-{
-    ali::Init_Visitor _iv;
-    for ( auto i : ali::Content::Instance().get_items() )
-	i.second -> accept( _iv );
-    _iv.init_impls();
-}

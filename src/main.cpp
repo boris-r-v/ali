@@ -6,10 +6,12 @@ int main (int argc, char** argv )
     xmlpp::DomParser parser; //FIX Почему-то если поле класса Core - то парсинг сегфорлится
 
     std::unique_ptr <ali::Core> core( new ali::Core( parser ) );
-    if ( 1 == argc )
-	core->load ("ali.xml");
-    else
-	core->load ( argv[1] );
 
+    const char* path = "ali.xml";
+    if ( 2 == argc )
+	path = argv[1];
+
+    core->load ( path );
+    core->init();
     core->run();
 }

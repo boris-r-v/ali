@@ -27,6 +27,7 @@ namespace ali
 	    ~Core() = default;
 
 	    void load( char const* );
+	    void init ( );
 	    void run ( );
 
     };
