@@ -45,8 +45,8 @@ ali::ItemFactory* ali::LibLoader::load_lib( std::string const& fabric_name )
 	    	_in_libs[ fabric_name ] = So( retval, lib );
 		return retval;
 	    }
-	    std::cout<<"LibLoader::loadLib cant find "<<dlerror()<<std::endl;
-	    return nullptr;
+	    std::cerr<<"LibLoader::loadLib - dynamic lib has being damage, reinstall scada software"<<std::endl;
+	    exit ( static_cast<int>(ali::rcode::ERROR) );
 	}
 	else
 	{
@@ -58,12 +58,13 @@ ali::ItemFactory* ali::LibLoader::load_lib( std::string const& fabric_name )
 	    }
 	    else
 	    {
-		std::cerr<<"LibLoader::load_lib cant find libutil_EmptyLogic"<<std::endl;
-		exit ( (int)ali::rcode::ERROR);
+		std::cerr<<"LibLoader::load_lib cant find libutil_EmptyLogic, reinstall scada software"<<std::endl;
+		exit ( static_cast<int>(ali::rcode::ERROR) );
 	    }
 	}
 	
     }
-    return nullptr;    
+    std::cerr<<"LibLoader::loadLib - dynamic lib has being damage, reinstall scada software"<<std::endl;
+    exit ( static_cast<int>(ali::rcode::ERROR) );
 }
 
