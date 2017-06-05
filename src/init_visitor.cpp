@@ -3,6 +3,11 @@
 #include <content.h>
 
 
+void ali::Init_Visitor::add_periodic( ali::Init, boost::posix_time::time_duration,  std::function< void () > )
+{
+    
+}
+
 void ali::Init_Visitor::add_init_stage( ali::Init _n,  std::function< void () > _f )
 {
     map_[_n].push_back( _f );

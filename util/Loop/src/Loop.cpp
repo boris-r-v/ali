@@ -11,6 +11,7 @@ util::Loop::Loop( xmlpp::Element const* _p ):
 void util::Loop::accept( ali::Init_Visitor& _iv )
 {
     _iv.add_init_stage( ali::Init::Stage_1, std::bind( &util::Loop::activate, this ) );
+    _iv.add_periodic( ali::Init::Stage_9, boost::posix_time::seconds(2), std::bind( &util::Loop::periodic, this ) );
 }
 
 
@@ -27,4 +28,9 @@ void util::Loop::tic( )
     ali::emit_tag( "time", ct );
     ali::emit_tag( "ctime", std::string ( ctime( &ct ) ) );
     ALI_LOG << "ctime: " << ctime( &ct ) << ALI_E;
+}
+
+void util::Loop::periodic( )
+{
+    tic();
 }

@@ -13,7 +13,7 @@ LINK.shared = $(LINK.cpp) -shared
 TARGET_LIB = libALI.so
 TARGET_LIB_SOURCES = $(wildcard *.cpp)
 TARGET_OBJECTS = $(TARGET_LIB_SOURCES:.cpp=.o)
-TARGET_LDFLAGS = -ldl -lpthread $(LIBXML)
+TARGET_LDFLAGS = -ldl -lpthread -lboost_system $(LIBXML)
 
 RUNNER = ali
 RUNNER_OBJECTS = main.o

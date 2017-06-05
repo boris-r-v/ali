@@ -1,5 +1,6 @@
 #include <ali.h>
 #include <content.h>
+#include <stdlib.h>
 
 ali::Content& ali::Content::Instance()
 {
@@ -24,3 +25,4 @@ ali::Items const& ali::Content::get_items() const
 {
     return items_;
 }
+

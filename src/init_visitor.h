@@ -5,6 +5,7 @@
 #include <list>
 #include <functional>
 #include <init_stages.h>
+#include <boost/date_time/posix_time/posix_time.hpp>
 
 namespace ali
 {
@@ -20,6 +21,7 @@ namespace ali
 	    ~Init_Visitor() = default;
     
 	    void add_init_stage( ali::Init, std::function< void () > );
+	    void add_periodic( ali::Init, boost::posix_time::time_duration, std::function< void () > );
 
 
 	friend class Core;

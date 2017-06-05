@@ -17,3 +17,7 @@ void util::con::activate( )
 }
 
 
+void util::con::periodic()
+{
+
+}

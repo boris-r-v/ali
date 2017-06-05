@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<root xmlns:util='http://test.ru' >
+<root xmlns:util="http://test.ru" xmlns:xi="http://www.w3.org/2001/XInclude" >
 
     <util:Loop id="emiter" title="FL" />   	
+    <util:Rec id="reciever2" />   
 
-    <util:Rec id="reciever" />   	
-    
+    <!--xi:include href="./ali2.xml" /-->
+
 </root>

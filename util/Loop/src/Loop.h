@@ -9,7 +9,8 @@ namespace util{
 
 	    void activate( );
 	    virtual void accept( ali::Init_Visitor& );	
-
+	    
+	    void periodic();
 	public:
 	    Loop( xmlpp::Element const* );
 	    virtual ~Loop() = default;
