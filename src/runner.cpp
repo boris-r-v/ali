@@ -6,7 +6,6 @@ ali::Runner::Runner( boost::posix_time::time_duration _d ):
     timer_( ali::Runners::Instance().io(), _d ),
     duration_( _d )
 {
-    std::cout<< "****** duration" << std::endl;
 }
 
 void ali::Runner::add_method( std::function< void () > _m )
@@ -23,7 +22,6 @@ void ali::Runner::one_tic()
 {
     for ( auto m : methods_ )
 	m();
-std::cout <<"reinit" << std::endl;
     timer_.expires_at( timer_.expires_at() + duration_ );
     timer_.async_wait( boost::bind( &Runner::one_tic, this ) );
 }

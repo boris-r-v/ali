@@ -15,10 +15,6 @@ namespace util{
 	    Loop( xmlpp::Element const* );
 	    virtual ~Loop() = default;
 	    
-
-	    virtual void tic( );
-
-
     };
 };
 
