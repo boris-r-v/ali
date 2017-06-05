@@ -1,11 +1,12 @@
 #include <ali.h>
 #include <init_visitor.h>
 #include <content.h>
+#include <runners.h>
 
 
-void ali::Init_Visitor::add_periodic( ali::Init, boost::posix_time::time_duration,  std::function< void () > )
+void ali::Init_Visitor::add_periodic( boost::posix_time::time_duration _d, std::function< void () > _m )
 {
-    
+    ali::Runners::Instance().add_periodic( _m, _d );
 }
 
 void ali::Init_Visitor::add_init_stage( ali::Init _n,  std::function< void () > _f )

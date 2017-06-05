@@ -1,7 +1,7 @@
 #include <core.h>
 #include <init_visitor.h>
 #include <loader.h>	
-#include <runner.h>	
+#include <runners.h>	
 
 void ali::Core::load( char const* _path )
 {
@@ -17,6 +17,6 @@ void ali::Core::init()
 
 void ali::Core::run ( )
 {
-    ali::Runner::Instance().run();
+    ali::Runners::Instance().run();
 }
 

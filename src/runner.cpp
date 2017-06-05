@@ -1,46 +1,34 @@
 #include <runner.h>
-#include <content.h>
+#include <runners.h>
 #include <boost/bind.hpp>
-#include <boost/date_time/posix_time/posix_time.hpp>
 
-ali::Runner& ali::Runner::Instance()
+ali::Runner::Runner( boost::posix_time::time_duration _d ):
+    timer_( ali::Runners::Instance().io(), _d ),
+    duration_( _d )
 {
-    static Runner __theRunnerInstance;
-    return __theRunnerInstance;
+    std::cout<< "****** duration" << std::endl;
 }
 
-ali::Runner::Runner():
-    timer_(io_, boost::posix_time::seconds(1) )
+void ali::Runner::add_method( std::function< void () > _m )
 {
+    methods_.push_back( _m );
 }
 
-void ali::Runner::run()
+void ali::Runner::run( )
 {
-    ALI_LOG<< "---------ali main loop run---------" << ALI_E;
-    timer_.async_wait( boost::bind( &Runner::one_sec_tic, this) );
-    io_.run();
+    timer_.async_wait( boost::bind( &Runner::one_tic, this ) );
 }
 
-void ali::Runner::one_sec_tic()
+void ali::Runner::one_tic()
 {
-    tic();
-    timer_.expires_at( timer_.expires_at() + boost::posix_time::seconds(1));
-    timer_.async_wait( boost::bind( &Runner::one_sec_tic, this) );
+    for ( auto m : methods_ )
+	m();
+std::cout <<"reinit" << std::endl;
+    timer_.expires_at( timer_.expires_at() + duration_ );
+    timer_.async_wait( boost::bind( &Runner::one_tic, this ) );
 }
 
-void ali::Runner::tic()
+std::shared_ptr<ali::Runner> ali::create_runner( boost::posix_time::time_duration _d )
 {
-    for ( auto i : ali::Content::Instance().get_items() )
-	i.second -> tic();
+    return std::shared_ptr<ali::Runner>( new ali::Runner( _d ) );
 }
-
-boost::asio::io_service& ali::Runner::io()
-{
-    return io_;
-}
-
-boost::asio::io_service const& ali::Runner::io() const
-{
-    return io_;
-}
-

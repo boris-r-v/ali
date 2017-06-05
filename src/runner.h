@@ -1,27 +1,28 @@
 #ifndef ali_runner
 #define ali_runner
-#include <boost/noncopyable.hpp>
+#include <list>
+#include <memory>
+#include <functional>
 #include <boost/asio.hpp>
 
 namespace ali
 {
-    class Runner: public boost::noncopyable
+    typedef std::list< std::function< void () > > InvArr;
+    class Runner
     {
-	    Runner( );
-	    void tic();
-
-	    boost::asio::io_service io_;
 	    boost::asio::deadline_timer timer_;
-	    void one_sec_tic();
+	    boost::posix_time::time_duration duration_;
+	    InvArr methods_;
+
+	    void one_tic();
 	public:
-	    static Runner& Instance();
+	    Runner( boost::posix_time::time_duration _d );
 	    ~Runner() = default;
 
-	    void run();
-
-	    boost::asio::io_service& io();
-	    boost::asio::io_service const& io() const;
-	    
+	    void add_method( std::function< void () > );
+	    void run( );
     };
+
+    std::shared_ptr<ali::Runner> create_runner( boost::posix_time::time_duration );    
 }
 #endif // ali_runner

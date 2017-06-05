@@ -21,8 +21,7 @@ namespace ali
 	    ~Init_Visitor() = default;
     
 	    void add_init_stage( ali::Init, std::function< void () > );
-	    void add_periodic( ali::Init, boost::posix_time::time_duration, std::function< void () > );
-
+	    void add_periodic( boost::posix_time::time_duration _d, std::function< void () > _m );
 
 	friend class Core;
     };

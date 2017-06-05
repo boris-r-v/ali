@@ -26,9 +26,6 @@ namespace ali
 	    virtual std::string id() const = 0;
 
 	    xmlpp::Element const* xml_node(){ return xml_node_ptr_; }
-
-	    /*sample tic method*/
-	    virtual void tic();
 	
 	friend class Init_Visitor;
     };

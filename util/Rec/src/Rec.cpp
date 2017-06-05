@@ -8,7 +8,7 @@ util::Rec::Rec( xmlpp::Element const* _p ):
 
 void util::Rec::accept( ali::Init_Visitor& _iv )
 {
-    _iv.add_init_stage( ali::Init::Stage_2, std::bind( &util::Rec::activate, this ) );
+    _iv.add_init_stage( ali::Init::Stage_1, std::bind( &util::Rec::activate, this ) );
 }
 
 

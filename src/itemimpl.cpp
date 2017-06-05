@@ -5,7 +5,3 @@ ali::ItemImpl::ItemImpl( xmlpp::Element const* _p ):
 {
 }
 
-void ali::ItemImpl::tic()
-{
-    //ALI_LOG << id() << " tic" << ALI_E;
-}
