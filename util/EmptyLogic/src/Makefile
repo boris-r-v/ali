@@ -17,7 +17,7 @@ CPPFLAGS = -I./ -I$(PREFIX)/include -I$(PREFIX)/include/ali  -I$(PREFIX)/include
 LIBS = $(GUI_LIBS) $(LIBXML) -lALI
 LDFLAGS = -shared -L$(PREFIX)/lib/ali/  -L$(PREFIX)/lib/ali/modules
 
-OPT = -fpic $(INCXML)
+OPT = -fpic -Wno-deprecated-declarations $(INCXML)
 CXXFLAGS = $(OPT)
 
 TARGET_LIB = lib$(MODULE)_$(ITEM).so

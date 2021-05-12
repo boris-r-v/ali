@@ -4,7 +4,7 @@ include $(CURDIR)/Makefile.config
 endif
 
 CPPFLAGS = -I. -DPREFIX=$(PREFIX) $(INCXML) 
-CXXFLAGS = -fpic #-Wno-deprecated-declarations
+CXXFLAGS = -fpic -Wno-deprecated-declarations
 INCXML = `pkg-config --cflags libxml++-2.6`
 LIBXML= `pkg-config --libs libxml++-2.6`
 
