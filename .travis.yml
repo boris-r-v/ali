@@ -1,0 +1,18 @@
+language: cpp
+dist: focal
+sudo: required
+os: linux
+compiler: gcc
+
+
+# Install make env
+addons:
+  apt:
+    packages:
+      - make
+      - libboost-system-dev
+      - libxml++2.6-dev
+
+script:
+  - g++ --version
+  - make 
