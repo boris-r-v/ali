@@ -1,15 +1,15 @@
 
 methodAccessSpec="""
-	public:
+        public:
     """
-methodDef = """	    //access for @NAME@
-		virtual @TYPE@ @NAME@( );
-		virtual void @NAME@( @TYPE@ );
+methodDef = """            //access for @NAME@
+                virtual @TYPE@ @NAME@( );
+                virtual void @NAME@( @TYPE@ );
     """
 attrAccessSpec = """
-	protected: //attributes
+        protected: //attributes
     """
-attrDef = """		@TYPE@ @NAME@_;
+attrDef = """                @TYPE@ @NAME@_;
     """
 
 methodStub ="""
@@ -44,36 +44,36 @@ methodStubBool="""
 setAttrString = """
     if ( "@NAME@" == _n )
     {
-	@NAME@( _v );
-	return true;    
+        @NAME@( _v );
+        return true;    
     }
 """
 setAttrDouble = """
     if ( "@NAME@" == _n )
     {
-	@NAME@( atof( _v.c_str() ) );
-	return true;    
+        @NAME@( atof( _v.c_str() ) );
+        return true;    
     }
 """
 setAttrInt = """
     if ( "@NAME@" == _n )
     {
-	@NAME@( atoi( _v.c_str() ) );
-	return true;    
+        @NAME@( atoi( _v.c_str() ) );
+        return true;    
     }
 """
 setAttrLong = """
     if ( "@NAME@" == _n )
     {
-	@NAME@( atoll( _v.c_str() ) );
-	return true;    
+        @NAME@( atoll( _v.c_str() ) );
+        return true;    
     }
 """
 setAttrBool = """
     if ( "@NAME@" == _n )
     {
-	@NAME@( atoi( _v.c_str() ) );
-	return true;    
+        @NAME@( atoi( _v.c_str() ) );
+        return true;    
     }
 """
 
@@ -89,41 +89,41 @@ setAttr_2 = """
 getAttrString="""
     if ( "@NAME@" == _n )
     {
-	_v = @NAME@_;
-	return true;
+        _v = @NAME@_;
+        return true;
     }
 """
 getAttrDouble="""
     if( "@NAME@" == _n )
     { 
-	char buff[32];snprintf(buff,sizeof(buff),"%f", @NAME@_ );
-	_v = buff;
-	return true;
+        char buff[32];snprintf(buff,sizeof(buff),"%f", @NAME@_ );
+        _v = buff;
+        return true;
     }
 """
 
 getAttrInt="""
     if( "@NAME@" == _n )
     { 
-	char buff[32];snprintf(buff,sizeof(buff),"%d", @NAME@_ );
-	_v = buff;
-	return true;
+        char buff[32];snprintf(buff,sizeof(buff),"%d", @NAME@_ );
+        _v = buff;
+        return true;
     }
 """
 getAttrLong="""
     if( "@NAME@" == _n )
     {
- 	char buff[32];snprintf(buff,sizeof(buff),"%ld", @NAME@_ );
-	_v = buff;
-	return true;
+         char buff[32];snprintf(buff,sizeof(buff),"%ld", @NAME@_ );
+        _v = buff;
+        return true;
     }
 """
 getAttrBool="""
     if( "@NAME@" == _n )
     { 
-	char buff[32];snprintf(buff,sizeof(buff),"%d", (int)@NAME@_ );
-	_v = buff;
-	return true;
+        char buff[32];snprintf(buff,sizeof(buff),"%d", (int)@NAME@_ );
+        _v = buff;
+        return true;
     }
 """
 getAttr_1 = """

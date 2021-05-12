@@ -15,13 +15,13 @@ std::shared_ptr<ali::ItemImpl> @MODUL@::@ITEM@Factory::create_item( xmlpp::Eleme
     std::string id = _p->get_attribute_value("id");
     if ( id.empty() )
     { 
-	char buff[20];
-	snprintf(buff, sizeof(buff), "_%p_", ii.get() );
-	ii->id( buff );
+        char buff[20];
+        snprintf(buff, sizeof(buff), "_%p_", ii.get() );
+        ii->id( buff );
     }
     else
     {
-	ii->id( id.c_str() );
+        ii->id( id.c_str() );
     }
     return ii;    
 }

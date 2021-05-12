@@ -7,13 +7,13 @@ namespace @MODUL@{
     class @ITEM@: public @MODUL@::@ITEM@Base
     {
 
-	    void activate( );
-	    virtual void accept( ali::Init_Visitor& );	
+            void activate( );
+            virtual void accept( ali::Init_Visitor& );        
 
-	public:
-	    @ITEM@( xmlpp::Element const* );
-	    virtual ~@ITEM@() = default;
-	    
+        public:
+            @ITEM@( xmlpp::Element const* );
+            virtual ~@ITEM@() = default;
+            
 
 
     };

@@ -8,24 +8,24 @@ namespace @MODUL@
 {
     class @ITEM@Base: public ali::ItemImpl
     {
-	public:
-	    @ITEM@Base( xmlpp::Element const* );
-	    virtual ~@ITEM@Base() = 0;
-	
+        public:
+            @ITEM@Base( xmlpp::Element const* );
+            virtual ~@ITEM@Base() = 0;
+        
 
-	    virtual bool has_attr( std::string const& );
-	    virtual bool set_attr( std::string const&, std::string const& );
-	    virtual bool get_attr( std::string const&, std::string& );
-	
-	    virtual void id( std::string const& );
-	    virtual std::string id() const;
-	    virtual std::string repo() const; 
-	
-	protected:
-	    virtual void apply_attrs();
+            virtual bool has_attr( std::string const& );
+            virtual bool set_attr( std::string const&, std::string const& );
+            virtual bool get_attr( std::string const&, std::string& );
+        
+            virtual void id( std::string const& );
+            virtual std::string id() const;
+            virtual std::string repo() const; 
+        
+        protected:
+            virtual void apply_attrs();
 
-	private:
-	    std::string id_;
-	    std::string repo_;
+        private:
+            std::string id_;
+            std::string repo_;
 
-/*--------------SECTION: access for attributes-----------------*/	
+/*--------------SECTION: access for attributes-----------------*/        

@@ -17,5 +17,5 @@ std::string @MODUL@::@ITEM@Base::repo() const
 void @MODUL@::@ITEM@Base::apply_attrs()
 {
     for( auto at : xml_node()->get_attributes() )
-	set_attr( at->get_name(), at->get_value() );
+        set_attr( at->get_name(), at->get_value() );
 }

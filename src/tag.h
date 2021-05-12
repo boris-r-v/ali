@@ -5,7 +5,9 @@
 #include <mutex>
 #include <list>
 #include <functional>
+#include <type_traits>
 #include <boost/variant.hpp>
+
 namespace ali
 {
     class Tag;
@@ -50,38 +52,45 @@ namespace ali
 	    }
 
 	private:
-	    template<typename T> struct is_boolean : public boost::is_same<boolean_type, T> {};
-	    template<typename T> struct is_numeric : public boost::type_traits::ice_and<boost::is_arithmetic<T>::value, boost::type_traits::ice_not<is_boolean<T>::value>::value> {};
-	    template<typename T> struct is_string  : public boost::type_traits::ice_or<boost::is_same<std::string, T>::value, boost::is_same<const char*, T>::value> {};
+        template <typename T> struct is_boolean : public std::is_same<boolean_type, T> {};
+        template <typename T> struct is_numeric : std::integral_constant <bool, std::is_arithmetic<T>::value && !is_boolean<T>::value > {};
+        template <typename T> struct is_string  : std::integral_constant <bool, std::is_same<std::string, T>::value || std::is_same<const char*, T>::value > {};
 
-	    template<typename T> void set(T _value, typename boost::enable_if<is_boolean<T> >::type* = NULL)
-	    {
-		value_ = boolean_type(_value);
-	    }
-	    template<typename T> void set(T _value, typename boost::enable_if<is_numeric<T> >::type* = NULL)
-	    {
-		value_ = numeric_type(_value);
-	    }
-	    template<typename T> void set(T _value, typename boost::enable_if<is_string<T> >::type* = NULL)
-	    {
-		value_ = string_type(_value);
-	    }	
-	    
-	    template<typename T> void get_internal(T &_value, typename boost::enable_if<is_boolean<T> >::type* = NULL) const
-	    {
-		if(get_type() == TAG_BOOLEAN) _value = boost::get<boolean_type>(value_);
-		else throw TagWrongTypeException(*this, TAG_BOOLEAN);
-	    }
-	    template<typename T> void get_internal(T &_value, typename boost::enable_if<is_numeric<T> >::type* = NULL) const
-	    {
-		if(get_type() == TAG_NUMERIC) _value = boost::get<numeric_type>(value_);
-		else throw TagWrongTypeException(*this, TAG_NUMERIC);
-	    }
-	    template<typename T> void get_internal(T &_value, typename boost::enable_if<is_string<T> >::type* = NULL) const
-	    {
-		if(get_type() == TAG_STRING) _value = boost::get<string_type>(value_);
-		else throw TagWrongTypeException(*this, TAG_STRING);
-	    }
+        template<typename T, std::enable_if_t< is_boolean<T>::value, int > = 0 > 
+        void set(T _value ) //, typename st::enable_if<is_boolean<T> >::type* = NULL)
+        {
+            value_ = boolean_type(_value);
+        }
+        template<typename T, std::enable_if_t< is_numeric<T>::value, int> = 0 >
+        void set(T _value ) //, typename boost::enable_if<is_numeric<T> >::type* = NULL)
+        {
+            value_ = numeric_type(_value);
+        }
+        template<typename T, std::enable_if_t< is_string<T>::value, int > = 0 >
+        void set(T _value ) //, typename boost::enable_if<is_string<T> >::type* = NULL)
+        {
+            value_ = string_type(_value);
+        }
+
+        template<typename T, std::enable_if_t< is_boolean<T>::value, int > = 0 > 
+        void get_internal(T &_value ) const// , typename boost::enable_if<is_boolean<T> >::type* = NULL) const
+        {
+            if(get_type() != TAG_BOOLEAN) throw TagWrongTypeException(*this, TAG_BOOLEAN);
+            _value = boost::get<boolean_type>(value_);
+        }
+        template<typename T, std::enable_if_t< is_numeric<T>::value, int > = 0 >
+        void get_internal(T &_value ) const//, typename boost::enable_if<is_numeric<T> >::type* = NULL) const
+        {
+            if(get_type() != TAG_NUMERIC) throw TagWrongTypeException(*this, TAG_NUMERIC);
+            _value = boost::get<numeric_type>(value_);
+        }
+        template<typename T, std::enable_if_t< is_string<T>::value, int > = 0 >
+        void get_internal(T &_value ) const//, typename boost::enable_if<is_string<T> >::type* = NULL) const
+        {
+            if(get_type() != TAG_STRING) throw TagWrongTypeException(*this, TAG_STRING);
+            _value = boost::get<string_type>(value_);
+        }
+
 	    friend std::ostream& operator << ( std::ostream&, Tag const& );    
     };
     std::ostream& operator << ( std::ostream&, Tag const& );    
