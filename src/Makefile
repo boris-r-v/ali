@@ -48,7 +48,7 @@ install: all
 	@sudo cp -v $(RUNNER) $(BINDIR)
 	@sudo cp -v alirun $(BINDIR)
 	@sudo cp -v alidirs $(BINDIR)
-	@cp -v *.h $(INCDIR)
-	@cp -v $(TARGET_LIB) $(LIBDIR)
+	@sudo cp -v *.h $(INCDIR)
+	@sudo cp -v $(TARGET_LIB) $(LIBDIR)
 	@$(MAKE) -C alimake
 
