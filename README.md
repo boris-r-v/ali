@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/boris_r_v/ali.svg?branch=master)](https://travis-ci.org/boris_r_v/ali)
-
+[![Build Status](https://travis-ci.com/boris-r-v/ali.svg?branch=master)](https://travis-ci.com/boris-r-v/ali)
 
 ali
 =====
