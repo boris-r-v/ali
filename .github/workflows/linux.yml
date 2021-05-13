@@ -14,7 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Ubuntu dependences
-      run: sudo apt install make libboost-system-dev libxml++2.6-dev
+      run: sudo apt install make libboost-system-dev libxml++2.6-dev mysql-server
+    - name: Load mysql dump
+      run: mysql test_db < backup-file.sql
     - name: make
       run: make
       
