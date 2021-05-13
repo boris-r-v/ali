@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/boris-r-v/ali.svg?branch=master)](https://travis-ci.com/boris-r-v/ali)
+[![linux](https://github.com/boris-r-v/ali/actions/workflows/linux.yml/badge.svg)](https://github.com/boris-r-v/ali/actions/workflows/linux.yml)
 
 ali
 =====
